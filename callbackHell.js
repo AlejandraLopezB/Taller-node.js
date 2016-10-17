@@ -16,7 +16,7 @@ request(API, function(error, response, body){
 	var data = JSON.parse(body);
 
 	//Nombre usuario
-	var user = data.filter(x => x.name == user_name)[0];
+	var user = data.filter(x => x.name == user_name);
 	//var user_id = user.id;
 	array.push("id: " + user.id);
 	array.push("name: " + user.name);
