@@ -14,6 +14,7 @@ app.use("/node_modules", express.static('node_modules'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//Hora de la API
 var Hora = require('./models/').Hora;
 
 module.exports = {
@@ -51,6 +52,22 @@ app.get('/guardar-hora', (req, res) => {
   	.catch(function (error) {
     	console.log(error);
   	});
+});
+
+
+//fibonacci en la direccion /fibonacci/:n
+const fibonacci = require('./lib/fib.js');
+
+app.get('/fibonacci/:n', (req, res) => {
+
+	var valor = Number(req.params.n);
+	var aux = "fibonacci-" + valor; 
+
+    var result = {};
+    result['fibonacci-'+valor] = fibonacci.fib(valor);
+
+    res.json(result);
+    res.end();
 });
 
 
